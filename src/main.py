@@ -28,8 +28,8 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 # Nodes with higher degrees are considered more central.
 #
 def calculate_centrality(adjacencyMatrix, node_idx):
-    print(COLORS.BOLD_GREEN + "\nAdjacency Matrix : \n" + COLORS.BOLD_BLUE)
-    print(adjacencyMatrix)
+    # print(COLORS.BOLD_GREEN + "\nAdjacency Matrix : \n" + COLORS.BOLD_BLUE)
+    # print(adjacencyMatrix)
 
     # return Centrality #
     return np.sum(adjacencyMatrix[node_idx])
