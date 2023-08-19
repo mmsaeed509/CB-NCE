@@ -10,9 +10,9 @@ from sklearn.metrics import pairwise_distances
 #
 adjacency_matrix = np.random.rand(100, 100)
 
-# Define parameters #
+# Define parameters (step 2) #
 Kmin = 2  # Minimum number of clusters #
-Kmax = 15  # Maximum number of clusters #
+Kmax = 10  # Maximum number of clusters #
 
 # Initialize variables #
 best_k = None
@@ -26,7 +26,7 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 # use Degree Centrality to calc
 # Degree centrality is a simple measure that calculates the number of edges connected to a node.
 # Nodes with higher degrees are considered more central.
-#
+# (step 3)
 def calculate_centrality(adjacencyMatrix, node_idx):
     # print(COLORS.BOLD_GREEN + "\nAdjacency Matrix : \n" + COLORS.BOLD_BLUE)
     # print(adjacencyMatrix)
@@ -52,11 +52,12 @@ for K in range(Kmin, Kmax + 1):
     for cluster_idx in range(K):
         cluster_nodes = np.where(cluster_labels == cluster_idx)[0]
 
-        # Calculate the estimated center of the cluster #
+        # Calculate the estimated center of the cluster (step 3) #
         estimated_center = cluster_nodes[
             np.argmax([calculate_centrality(adjacency_matrix, node_idx) for node_idx in cluster_nodes])]
 
-        # Calculate ACE for the cluster #
+        # Calculate ACE for the cluster (step 4,7) #
+        # sum difference (ture and estimated)
         ace_cluster = 0
         for node_idx in cluster_nodes:
             ace_cluster += np.sum(
@@ -72,4 +73,4 @@ for K in range(Kmin, Kmax + 1):
         best_ace_upper_bound = ace_upper_bound
         best_k = K
 
-print(COLORS.BOLD_PURPLE + "\n Estimated optimal number of clusters:" + COLORS.BOLD_CYAN, best_k)
+print(COLORS.BOLD_PURPLE + "\nEstimated optimal number of clusters: " + COLORS.BOLD_CYAN, best_k)
