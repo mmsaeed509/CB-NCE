@@ -8,35 +8,35 @@ Graph clustering is the process of grouping nodes in a graph such that nodes wit
 
 - **Step 1: Centrality Measure Calculation:**
   - In graph theory, centrality measures quantify the importance or influence of nodes within a graph. The `CB-NCE` algorithm utilizes centrality measures to estimate the correct number of clusters in a graph.
-  - The algorithm considers three types of centrality measures: degree centrality, eigenvector centrality, and closeness centrality. These measures help identify the most important nodes in the graph.
+  - The algorithm considers three types of centrality measures: `degree centrality`, `eigenvector centrality`, and `closeness centrality`. These measures help identify the most important nodes in the graph.
 
 - **Step 2: Cluster Generation:**
-  - The algorithm starts by generating clusters of nodes with varying numbers of clusters (K) from a specified range (Kmin to Kmax).
+  - The algorithm starts by generating clusters of nodes with varying numbers of clusters (`K`) from a specified range (Kmin to Kmax).
 
 - **Step 3: Cluster Center Determination:**
-  - For each cluster (CKk), the algorithm identifies the node with the highest centrality as the estimated center of that cluster.
+  - For each cluster (`CKk`), the algorithm identifies the node with the highest centrality as the estimated center of that cluster.
   - In cases where multiple nodes have the same highest centrality, a new central node is virtually introduced and connected to the node with the highest centrality.
 
 - **Step 4: Cluster Compactness Calculation:**
-  - The algorithm calculates the cluster compactness (yKk) for each cluster CKk. Cluster compactness measures how close the nodes in a cluster are to their estimated center.
+  - The algorithm calculates the cluster compactness (`yKk`) for each cluster `CKk`. Cluster compactness measures how close the nodes in a cluster are to their estimated center.
 
 - **Step 5: Total Cluster Compactness:**
-  - The total cluster compactness (yK) is computed by averaging the cluster compactness values for all clusters CKk.
+  - The total cluster compactness (`yK`) is computed by averaging the cluster compactness values for all clusters `CKk`.
 
 - **Step 6: Variance Calculation:**
-  - The algorithm calculates the variance (σ^2_Kk) for each cluster CKk based on the scatteredness of nodes around their estimated cluster center.
+  - The algorithm calculates the variance (`σ^2_Kk`) for each cluster `CKk` based on the scatteredness of nodes around their estimated cluster center.
 
-- **Step 7: Average Central Error (ACE) Calculation:**
-  - ACE (zK) is calculated as the error between the true center of a node and its estimated center for each cluster CKk. It's computed by summing the squared distances of nodes from their estimated cluster centers.
+- **Step 7: Average Central Error (`ACE`) Calculation:**
+  - `ACE` (`zK`) is calculated as the error between the true center of a node and its estimated center for each cluster `CKk`. It's computed by summing the squared distances of nodes from their estimated cluster centers.
 
 - **Step 8: Noiseless Description Length:**
-  - The algorithm converts the ACE into a noiseless description length (MNDL) based on the cluster compactness and a constant γ. MNDL represents a measure of the optimal number of clusters that minimizes the error.
+  - The algorithm converts the `ACE` into a noiseless description length (`MNDL`) based on the cluster compactness and `a` constant `γ`. `MNDL` represents a measure of the optimal number of clusters that minimizes the error.
 
 - **Step 9: Optimal Number of Clusters Estimation:**
-  - The algorithm iterates through the range of possible cluster numbers (K) and selects the number of clusters (Kˆ) that corresponds to the minimum noiseless description length (MNDL).
+  - The algorithm iterates through the range of possible cluster numbers (`K`) and selects the number of clusters (`Kˆ`) that corresponds to the minimum noiseless description length (`MNDL`).
 
 - **Step 10: Clustering Solution:**
-  - The algorithm determines the final clusters based on the estimated optimal number of clusters (Kˆ). Each node is assigned to the cluster where its estimated center resides.
+  - The algorithm determines the final clusters based on the estimated optimal number of clusters (`Kˆ`). Each node is assigned to the cluster where its estimated center resides.
 
 **Conclusion:**
 The `CB-NCE` algorithm provides a method to estimate the optimal number of clusters in graph clustering by utilizing centrality measures and minimizing the average central error. By following these steps, the algorithm identifies the correct number of clusters that best capture the underlying structure of the data in the graph.
