@@ -12,7 +12,7 @@ adjacency_matrix = np.random.rand(100, 100)
 
 # Define parameters (step 2) #
 Kmin = 2  # Minimum number of clusters #
-Kmax = 10  # Maximum number of clusters #
+Kmax = 25  # Maximum number of clusters #
 
 # Initialize variables #
 best_k = None
